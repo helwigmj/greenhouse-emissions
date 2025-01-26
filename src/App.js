@@ -3,11 +3,19 @@ import { Chart } from "react-google-charts";
 import './App.css';
 
 const options = {
-  title: "Greenhouse Emissions",
+  title: "Total greenhouse gas emissions excluding LULUCF (Mt CO2e)",
+  chartArea:{ width:'75%', height:'75%' },
   fontSize: 14,
-  hAxis: { viewWindowMode: 'pretty' },
-  height: 750,
+  fontName: 'Trebuchet MS',
+  height: 600,
   legend: { position: "right" },
+  pointSize: 5,
+  tooltip: { showColorCode: true },
+  hAxis: {
+    title: 'Year',
+    viewWindowMode: 'pretty',
+  },
+  vAxis: { title: 'Emissions Count' },
 };
 
 function App() {
@@ -68,9 +76,9 @@ function App() {
     data.map((item, index) => {
       if (index === 0) {
         // Add data category to initial array
-        chartData[index].push(country)
+        return chartData[index].push(country)
       } else {
-        chartData[index].push(item.value);
+        return chartData[index].push(item.value);
       }
     })
 
@@ -80,21 +88,38 @@ function App() {
 
     return chartData;
   }
-  
+
   return (
     <div className="App">
       <header className="App-header">
         <p>
           Greenhouse Gas Emissions
         </p>
+      </header>
+      <main>
         <Chart
           chartType="ScatterChart"
           width="100%"
           height="100%"
           data={data}
           options={options}
+          controls={[
+            {
+              controlType: "DateRangeFilter",
+              'containerId': 'filter_div',
+              options: {
+                filterColumnLabel: "Year",
+                ui: { 
+                  label: "Filter Year Range:",
+                  format: { pattern: "yyyy" } 
+                },
+              },
+              controlPosition: "bottom",
+            },
+          ]}
+          legendToggle
         />
-      </header>
+      </main>
     </div>
   );
 }

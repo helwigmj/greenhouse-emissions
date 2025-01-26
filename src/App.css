@@ -1,16 +1,27 @@
 .App {
   text-align: center;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
 }
 
 .App-header {
-  background-color: #282c34;
   padding: 1em;
-  min-height: 100vh;
   text-align: center;
-  /* display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center; */
   font-size: calc(10px + 2vmin);
-  color: white;
+  font-weight: 900;
+}
+
+.google-visualization-controls-rangefilter {
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif !important;
+  font-size: 14px !important;
+  padding: 1em 0 !important;
+  .google-visualization-controls-rangefilter-thumblabel {
+    color: rgb(82, 82, 82) !important;
+    font-weight: bold;
+    padding: 0 0.2em;
+  }
+}
+
+
+#google-visualization-errors-all-5 {
+  visibility: hidden !important;
 }
