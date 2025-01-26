@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/greenhouse-emissions/static/css/main.f9d23347.css",
+    "main.js": "/greenhouse-emissions/static/js/main.48d71a5d.js",
+    "index.html": "/greenhouse-emissions/index.html",
+    "main.f9d23347.css.map": "/greenhouse-emissions/static/css/main.f9d23347.css.map",
+    "main.48d71a5d.js.map": "/greenhouse-emissions/static/js/main.48d71a5d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f9d23347.css",
+    "static/js/main.48d71a5d.js"
+  ]
+}
