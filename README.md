@@ -16,6 +16,18 @@ This is a one page application comparing the Greenhouse Gas Emissions of the Uni
 
 This project was developed with `Node v22.13.1`.
 
+## Deployments
+
+1. Create an application build:
+```bash
+ npm run build
+```
+
+2. Create a deployment:
+```bash
+ npm run deploy
+ ```
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -32,3 +44,10 @@ You may also see any lint errors in the console.
 
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+
+## Potential Features
+
+1. Add [Chart Editor](https://www.react-google-charts.com/examples/advanced-chart-editor) so users have options on the kind of data visualization displayed
+2. Add functionality to dynamically add data to the chart by country
+3. Have the size of each data point display in ratio to to the value of the associated emissions count

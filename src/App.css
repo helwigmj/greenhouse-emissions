@@ -6,8 +6,23 @@
 .App-header {
   padding: 1em;
   text-align: center;
-  font-size: calc(10px + 2vmin);
-  font-weight: 900;
+  h1 {
+    margin-bottom: 0px;
+  }
+  h3 {
+    margin-top: 0.25em;
+    font-style: italic;
+    font-weight: 200;
+    opacity: 0.75;
+  }
+}
+
+p.content-paragraph {
+  font-size: 14px;
+  line-height: 1.25em;
+  margin: 0 auto;
+  padding: 0 0 1.75em;
+  width: 50%;
 }
 
 .google-visualization-controls-rangefilter {

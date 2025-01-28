@@ -1,21 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import { Chart } from "react-google-charts";
-import './App.css';
+import "./App.css";
 
 const options = {
   title: "Total greenhouse gas emissions excluding LULUCF (Mt CO2e)",
-  chartArea:{ width:'75%', height:'75%' },
+  chartArea: { width: "75%", height: "75%" },
   fontSize: 14,
-  fontName: 'Trebuchet MS',
+  fontName: "Trebuchet MS",
   height: 600,
   legend: { position: "right" },
   pointSize: 5,
   tooltip: { showColorCode: true },
   hAxis: {
-    title: 'Year',
-    viewWindowMode: 'pretty',
+    title: "Year",
+    // viewWindowMode: "pretty",
   },
-  vAxis: { title: 'Emissions Count' },
+  vAxis: { title: "Emissions Count" },
 };
 
 function App() {
@@ -25,27 +25,27 @@ function App() {
     const fetchData = async () => {
       let chartData;
       // Fetch USA data & format for chart component
-      const usaData = await fetchEmissionsData('USA');
+      const usaData = await fetchEmissionsData("USA");
       chartData = setChartData(usaData);
       // Fetch Japan data & format for chart component
-      const japanData = await fetchEmissionsData('JPN');
+      const japanData = await fetchEmissionsData("JPN");
       chartData = addChartData(japanData, chartData, "Japan");
       // Fetch China data & format for chart component
-      const chinaData = await fetchEmissionsData('CHN');
+      const chinaData = await fetchEmissionsData("CHN");
       chartData = addChartData(chinaData, chartData, "China");
       // Fetch India data & format for chart component
-      const indiaData = await fetchEmissionsData('IND');
+      const indiaData = await fetchEmissionsData("IND");
       chartData = addChartData(indiaData, chartData, "India");
       // Fetch France data & format for chart component
-      const franceData = await fetchEmissionsData('FRA');
+      const franceData = await fetchEmissionsData("FRA");
       chartData = addChartData(franceData, chartData, "France");
       // Fetch Brazil data & format for chart component
-      const brazilData = await fetchEmissionsData('BRA');
+      const brazilData = await fetchEmissionsData("BRA");
       chartData = addChartData(brazilData, chartData, "Brazil");
 
       setData(chartData);
     }
-    
+
     fetchData();
   }, []);
 
@@ -64,7 +64,7 @@ function App() {
     let chartData = [];
     data.map(item => chartData.push([
       // Format string as Date to enable render in UI
-      new Date(`Dec 31 ${item.date}`), 
+      new Date(`Dec 31 ${item.date}`),
       item.value
     ]));
     // Add x-axis and data category as initial array
@@ -92,11 +92,22 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <p>
+        <h1>
           Greenhouse Gas Emissions
-        </p>
+        </h1>
+        <h3>An overview by country from 1972 - 2022</h3>
       </header>
+
       <main>
+        <p class="content-paragraph">
+          This chart currently compares data from the United States,
+          Japan, China, India, France and Brazil, which is provided by&nbsp;
+          <a href="https://datahelpdesk.worldbank.org/knowledgebase/articles/889392-api-documentation">
+            World Bank API
+          </a>.
+          <br />Hover over each individual data point to show a tooltip with the associated information on the year, country and emissions count. To adjust the number of years shown in the chart, slide either selector in the 'Filter Year Range' date filter. To toggle the visibility of data by country, click the associated country in the legend to
+          the right of the chart.
+        </p>
         <Chart
           chartType="ScatterChart"
           width="100%"
@@ -106,12 +117,12 @@ function App() {
           controls={[
             {
               controlType: "DateRangeFilter",
-              'containerId': 'filter_div',
+              "containerId": "filter_div",
               options: {
                 filterColumnLabel: "Year",
-                ui: { 
+                ui: {
                   label: "Filter Year Range:",
-                  format: { pattern: "yyyy" } 
+                  format: { pattern: "yyyy" }
                 },
               },
               controlPosition: "bottom",
